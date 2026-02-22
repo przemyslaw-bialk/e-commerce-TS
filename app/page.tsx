@@ -9,6 +9,11 @@ const Home = async () => {
   return (
     <div>
       <h1>hello next!</h1>
+      <div>
+        {items.map((item) => (
+          <p key={item._id}>{item.name}</p>
+        ))}
+      </div>
     </div>
   );
 };

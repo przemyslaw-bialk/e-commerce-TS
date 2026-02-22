@@ -1,23 +1,20 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
-import Navigation from "./_components/Navigation";
-import Logo from "./_components/Logo";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+// getting font
+import { Josefin_Sans } from "next/font/google";
+import Header from "./_components/Header";
+const josefin = Josefin_Sans({
+  subsets: ["latin-ext"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "e-commerce website",
-  description: "selling the best products on the planet",
+  title: {
+    template: `%s SHOP`,
+    default: "Welcome in our shop! ",
+  },
+  description: "Best products in the planet with the healthiest food!",
 };
 
 export default function RootLayout({
@@ -28,15 +25,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${josefin.className} min-h-screen flex flex-col max-w-7xl mx-auto p-2 `}
       >
-        <header>
-          <Logo />
-          <Navigation />
-        </header>
-
-        <main> {children}</main>
-        <footer>copyright by me</footer>
+        <Header />
+        <div>
+          <main className=" bg-slate-600">{children}</main>
+        </div>
+        <footer>copyright by me łoś</footer>
       </body>
     </html>
   );
