@@ -25,10 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${josefin.className} min-h-screen flex flex-col max-w-7xl mx-auto p-2 `}
+        className={`${josefin.className} min-h-screen flex flex-col max-w-7xl mx-auto `}
       >
         <Header />
-        <div>
+        <div className="p-1">
           <main className=" bg-slate-600">{children}</main>
         </div>
         <footer>copyright by me łoś</footer>
