@@ -14,6 +14,7 @@ const Home = async () => {
           <p key={item._id}>{item.name}</p>
         ))}
       </div>
+      <p>test</p>
     </div>
   );
 };
