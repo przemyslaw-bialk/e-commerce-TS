@@ -21,7 +21,8 @@
     "paths": {
       "@lib/*": ["app/_lib/*"],
       "@models/*": ["app/_models/*"],
-      "@components/*": ["app/_components/*"]
+      "@components/*": ["app/_components/*"],
+      "@public/*": ["app/public/*"]
     }
   },
   "include": [

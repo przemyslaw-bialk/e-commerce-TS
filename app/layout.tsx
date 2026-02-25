@@ -29,7 +29,7 @@ export default function RootLayout({
       >
         <Header />
         <div className="p-1">
-          <main className=" bg-slate-600">{children}</main>
+          <main>{children}</main>
         </div>
         <footer>copyright by me łoś</footer>
       </body>
