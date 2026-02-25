@@ -3,7 +3,7 @@ import "./globals.css";
 
 // getting font
 import { Josefin_Sans } from "next/font/google";
-import Header from "./_components/Header";
+import Header from "./_components/layout/Header";
 const josefin = Josefin_Sans({
   subsets: ["latin-ext"],
   display: "swap",

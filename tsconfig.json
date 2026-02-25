@@ -20,7 +20,8 @@
     "baseUrl": ".",
     "paths": {
       "@lib/*": ["app/_lib/*"],
-      "@models/*": ["app/_models/*"]
+      "@models/*": ["app/_models/*"],
+      "@components/*": ["app/_components/*"]
     }
   },
   "include": [
