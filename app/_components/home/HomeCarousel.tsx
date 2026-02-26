@@ -4,9 +4,13 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@components/ui/carousel";
+
+import { Button } from "@components/ui/button";
+
 import Autoplay from "embla-carousel-autoplay";
 
 import Image from "next/image";
+import Link from "next/link";
 
 const HomeCarousel = () => {
   return (
@@ -39,12 +43,20 @@ const HomeCarousel = () => {
             className="object-cover"
           />
           <div className=" absolute top-10 left-20 flex flex-col gap-3 items-start">
-            <h2 className="text-white text-2xl font-bold bg-green-500/80 pr-14 pl-2 py-1 tracking-wider rounded-3xl">
+            <h2 className="text-white text-2xl font-bold bg-yellow-500/80 pr-14 pl-2 py-1 tracking-wider rounded-3xl">
               Suplements
             </h2>
-            <h2 className="text-white text-2xl font-bold bg-green-500/80 pr-20 pl-2 py-1 tracking-wider rounded-3xl">
+            <h2 className="text-white text-2xl font-bold bg-blue-500/80 pr-20 pl-2 py-1 tracking-wider rounded-3xl">
               Which you need
             </h2>
+            <Link href="/items">
+              <Button
+                variant="default"
+                className="uppercase font-bold mt-5 rounded-2xl tracking-tighter"
+              >
+                Explore Products
+              </Button>
+            </Link>
           </div>
         </CarouselItem>
         <CarouselItem className="h-80 bg-green-200 flex items-center justify-center">

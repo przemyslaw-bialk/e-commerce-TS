@@ -37,6 +37,11 @@ export default function Navigation() {
             Products
           </Link>
         </li>
+        <li>
+          <Link href="/about" onClick={() => setShowMenu(false)}>
+            About
+          </Link>
+        </li>
       </ul>
 
       {/* HAMBURGER */}
