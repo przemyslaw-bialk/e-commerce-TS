@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { CiMenuFries } from "react-icons/ci";
+import { LuUser } from "react-icons/lu";
 
 export default function Navigation() {
   const [showMenu, setShowMenu] = useState(false);
@@ -17,17 +18,18 @@ export default function Navigation() {
       <ul
         className={`
           md:flex md:static md:h-auto md:bg-transparent
-          md:items-center  md:justify-end md:flex-row md:mr-1
+          md:items-center  md:justify-end md:flex-row md:mr-1 list-none
           ${showMenu ? "flex" : "hidden"}
           items-center flex-col 
           absolute top-0 left-0
           w-full h-screen
           bg-red-400
-          z-10 gap-2
+          z-10 gap-2 
+          overflow-hidden
          
         `}
       >
-        <li className="mt-1 md:m-0">
+        <li className="mt-1 md:m-0 p-0">
           <Link href="/" onClick={() => setShowMenu(false)}>
             Home
           </Link>
@@ -40,6 +42,11 @@ export default function Navigation() {
         <li>
           <Link href="/about" onClick={() => setShowMenu(false)}>
             About
+          </Link>
+        </li>
+        <li>
+          <Link href="/account" onClick={() => setShowMenu(false)}>
+            <LuUser className="w-5 h-5 mb-1 " />
           </Link>
         </li>
       </ul>

@@ -31,7 +31,6 @@ export default function RootLayout({
         <div className="p-1">
           <main>{children}</main>
         </div>
-        <footer>copyright by me łoś</footer>
       </body>
     </html>
   );

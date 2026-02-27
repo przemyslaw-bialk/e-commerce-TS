@@ -1,4 +1,6 @@
+import SidebarUser from "@components/account/SidebarUser";
 import { ReactNode } from "react";
+import { SidebarProvider, SidebarTrigger } from "@components/ui/sidebar";
 
 type LayoutProps = {
   children: ReactNode;
@@ -6,10 +8,13 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="grid grid-cols-[16rem_1fr] h-full gap-10 bg-emerald-800">
-      <div className="bg-red-300">Navigation</div>
-      <div className="bg-green-300">{children}</div>
-    </div>
+    <SidebarProvider className="relative flex">
+      <SidebarUser />
+      <SidebarTrigger className="block md:hidden" />
+      <main className="bg-green-300 w-full">
+        <div> {children}</div>
+      </main>
+    </SidebarProvider>
   );
 };
 
