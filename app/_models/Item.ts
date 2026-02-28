@@ -1,15 +1,22 @@
-import mongoose from "mongoose";
+import mongoose, { SchemaTimestampsConfig } from "mongoose";
 
 export interface Item {
   name: string;
-  description?: string;
+  price: number;
   qtn: number;
+  description?: string;
 }
 
-const ItemSchema = new mongoose.Schema<Item>({
-  name: { type: String, required: true },
-  description: String,
-  qtn: { type: Number, required: true },
-});
+const ItemSchema = new mongoose.Schema<Item & SchemaTimestampsConfig>(
+  {
+    name: { type: String, required: true },
+    price: Number,
+    description: String,
+    qtn: { type: Number, required: true, default: 0 },
+  },
+  {
+    timestamps: true,
+  },
+);
 
 export default mongoose.models.Item || mongoose.model<Item>("Item", ItemSchema);
