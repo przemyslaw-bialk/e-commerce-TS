@@ -1,4 +1,5 @@
 import HomeCarousel from "@components/home/HomeCarousel";
+import Products from "@components/ui/Products";
 import dbConnect from "@lib/mongodb";
 import Item from "@models/Item";
 
@@ -17,6 +18,7 @@ const Home = async () => {
       </div>
 
       <p>test</p>
+      <Products />
     </div>
   );
 };

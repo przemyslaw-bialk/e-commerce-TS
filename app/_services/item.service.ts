@@ -1,10 +1,4 @@
-export interface Item {
-  _id?: string;
-  name: string;
-  price: number;
-  qtn: number;
-  description?: string;
-}
+import { Item } from "@models/Item";
 
 export const getItems = async (): Promise<Item[]> => {
   const res = await fetch("/api/items");
