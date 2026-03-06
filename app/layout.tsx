@@ -4,7 +4,8 @@ import "./globals.css";
 import { Josefin_Sans } from "next/font/google";
 import Header from "./_components/layout/Header";
 
-import { ClerkProvider } from "@clerk/nextjs";
+import { ClerkLoaded, ClerkLoading, ClerkProvider } from "@clerk/nextjs";
+import Spinner from "@components/ui/Spinner";
 
 const josefin = Josefin_Sans({
   subsets: ["latin-ext"],
@@ -25,17 +26,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body
-          className={`${josefin.className} min-h-screen flex flex-col max-w-7xl mx-auto`}
-        >
-          <Header />
-          <div className="p-1">
-            <main>{children}</main>
-          </div>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body
+        className={`${josefin.className} min-h-screen flex flex-col max-w-7xl mx-auto`}
+      >
+        <ClerkProvider>
+          <ClerkLoading>
+            <Spinner />
+          </ClerkLoading>
+          <ClerkLoaded>
+            <Header />
+            <div className="p-1">
+              <main>{children}</main>
+            </div>
+          </ClerkLoaded>
+        </ClerkProvider>
+      </body>
+    </html>
   );
 }
