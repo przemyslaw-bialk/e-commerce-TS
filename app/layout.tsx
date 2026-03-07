@@ -29,9 +29,7 @@ export default function RootLayout({
       <body
         className={`${josefin.className} min-h-screen flex flex-col max-w-7xl mx-auto`}
       >
-        <ClerkProvider
-          publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
-        >
+        <ClerkProvider>
           <Header />
           <div className="p-1">
             <main>{children}</main>

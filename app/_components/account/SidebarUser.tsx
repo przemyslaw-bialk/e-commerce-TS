@@ -12,6 +12,7 @@ import {
 } from "@components/ui/sidebar";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { UserButton } from "@clerk/nextjs";
 
 const SidebarUser = () => {
   const [open, setOpen] = useState(false);
@@ -44,6 +45,9 @@ const SidebarUser = () => {
               {/* Dropdown Items */}
               {open && (
                 <div className="ml-3 mt-1 flex flex-col gap-1">
+                  <SidebarMenuItem>
+                    <UserButton />
+                  </SidebarMenuItem>
                   <SidebarMenuItem>
                     <Link href="/account/profile">profile</Link>
                   </SidebarMenuItem>

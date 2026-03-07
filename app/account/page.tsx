@@ -1,10 +1,7 @@
+import Greetings from "@components/account/Grettings";
+
 const Account = () => {
-  return (
-    <div>
-      <p>Hello, Przemke</p>
-      <p>how are u</p>
-    </div>
-  );
+  return <Greetings />;
 };
 
 export default Account;

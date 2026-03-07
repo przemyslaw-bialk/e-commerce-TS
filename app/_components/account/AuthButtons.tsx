@@ -1,16 +1,29 @@
-import { SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
+"use client";
+import {
+  SignInButton,
+  SignOutButton,
+  SignUpButton,
+  useUser,
+} from "@clerk/nextjs";
 import { Button } from "@components/ui/button";
 
 const AuthButtons = () => {
+  const { isSignedIn } = useUser();
+
   return (
     <div className="flex gap-2">
-      <SignInButton>
-        <Button>Sign in</Button>
-      </SignInButton>
-      <SignUpButton>
-        <Button>Sign up</Button>
-      </SignUpButton>
-      <UserButton />
+      {isSignedIn ? (
+        <SignOutButton />
+      ) : (
+        <>
+          <SignInButton>
+            <Button>Sign in</Button>
+          </SignInButton>
+          <SignUpButton>
+            <Button>Sign up</Button>
+          </SignUpButton>
+        </>
+      )}
     </div>
   );
 };
