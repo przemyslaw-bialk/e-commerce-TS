@@ -1,7 +1,9 @@
 import { Item } from "@models/Item";
 
 export const getItems = async (): Promise<Item[]> => {
-  const res = await fetch("/api/items");
+  const res = await fetch("/api/items", {
+    cache: "no-store",
+  });
 
   if (!res.ok) throw new Error("failed to fetch items");
   const json = await res.json();
