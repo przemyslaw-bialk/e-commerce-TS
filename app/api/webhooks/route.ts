@@ -3,6 +3,8 @@ import { NextRequest } from "next/server";
 import createOrUpdateUser from "app/_services/user.service";
 
 export async function POST(req: NextRequest) {
+  console.log("WEBHOOK HIT");
+
   try {
     const evt = await verifyWebhook(req);
 
