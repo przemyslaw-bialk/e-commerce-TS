@@ -13,6 +13,7 @@ const createOrUpdateUser = async (
     { clerkId },
     {
       $set: {
+        clerkId,
         firstName,
         lastName,
         email,

@@ -5,9 +5,8 @@ import createOrUpdateUser from "app/_services/user.service";
 export async function POST(req: NextRequest) {
   try {
     const evt = await verifyWebhook(req);
-    const eventType = evt.type;
 
-    if (eventType === "user.created" || eventType === "user.updated") {
+    if (evt.type === "user.created" || evt.type === "user.updated") {
       const { id, first_name, last_name, email_addresses } = evt.data;
 
       const email = email_addresses?.[0]?.email_address;
@@ -16,12 +15,9 @@ export async function POST(req: NextRequest) {
         return new Response("Email missing", { status: 400 });
       }
 
-      await createOrUpdateUser(
-        id,
-        first_name as string,
-        last_name as string,
-        email,
-      );
+      await createOrUpdateUser(id, first_name ?? "", last_name ?? "", email);
+
+      console.log("User saved to MongoDB");
 
       return new Response("User synced", { status: 200 });
     }
