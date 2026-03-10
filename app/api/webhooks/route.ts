@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
     );
     console.log("Webhook payload:", evt.data);
     if (eventType === "user.created") {
-      console.log("user created");
+      console.log("user created przemo");
     }
 
     return new Response("Webhook received", { status: 200 });
