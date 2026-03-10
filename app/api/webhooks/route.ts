@@ -1,29 +1,31 @@
 import { verifyWebhook } from "@clerk/nextjs/webhooks";
 import { NextRequest } from "next/server";
 
-export async function GET() {
-  return new Response("Webhook endpoint działa", { status: 200 });
-}
+export const runtime = "nodejs";
 
 export async function POST(req: NextRequest) {
   try {
     const evt = await verifyWebhook(req);
-
-    // Do something with payload
-    // For this guide, log payload to console
-    const { id } = evt.data;
     const eventType = evt.type;
-    console.log(
-      `Received webhook with ID ${id} and event type of ${eventType}`,
-    );
-    console.log("Webhook payload:", evt.data);
+    const { id } = evt.data;
+
+    console.log(`WEBHOOK HIT: ${eventType} - ${id}`);
+
     if (eventType === "user.created") {
-      console.log("user created przemo");
+      console.log("USER CREATED:", evt.data.first_name, evt.data.last_name);
+    }
+
+    if (eventType === "user.deleted") {
+      console.log("USER DELETED:", id);
     }
 
     return new Response("Webhook received", { status: 200 });
   } catch (err) {
-    console.error("Error verifying webhook:", err);
+    console.error("WEBHOOK ERROR:", err);
     return new Response("Error verifying webhook", { status: 400 });
   }
+}
+
+export async function GET() {
+  return new Response("Webhook endpoint działa", { status: 200 });
 }
