@@ -1,18 +1,26 @@
-import mongoose, { Document } from "mongoose";
+import mongoose from "mongoose";
 
-export interface IUser extends Document {
+export interface IUser {
+  clerkId: string;
   email: string;
-  password: string;
-  role: "user" | "admin";
+  firstName: string;
+  lastName: string;
   createdAt: Date;
   updatedAt: Date;
+  role: "user" | "admin";
 }
 
 const UserSchema = new mongoose.Schema<IUser>(
   {
+    clerkId: { type: String, unique: true },
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: true, minLength: 6 },
-    role: { type: String, enum: ["user", "admin"], default: "user" },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
+    },
   },
   { timestamps: true },
 );
