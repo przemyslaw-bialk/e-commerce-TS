@@ -1,6 +1,7 @@
 import User from "@models/User";
 import dbConnect from "@lib/mongodb";
 
+// create or update user
 export const createOrUpdateUser = async (
   id,
   first_name,
@@ -10,8 +11,14 @@ export const createOrUpdateUser = async (
   await dbConnect();
 
   try {
-    const email = email_addresses?.[0].email_address;
-    console.log(email);
+    const email = email_addresses?.[0]?.email_address;
+    let role;
+
+    if (email === "przemek.bialkwno@gmail.com") {
+      role = "admin";
+    } else {
+      role = "user";
+    }
 
     const user = await User.findOneAndUpdate(
       {
@@ -22,7 +29,7 @@ export const createOrUpdateUser = async (
           firstName: first_name,
           lastName: last_name,
           email,
-          role: "user",
+          role: role,
         },
       },
       { upsert: true, returnDocument: "after" },
@@ -34,6 +41,8 @@ export const createOrUpdateUser = async (
   }
 };
 
+// delete user
+
 export const deleteUser = async (id) => {
   await dbConnect();
 
@@ -42,5 +51,24 @@ export const deleteUser = async (id) => {
     return user;
   } catch (err) {
     console.log(err);
+  }
+};
+
+// authorize admin
+
+export const authorizeAdmin = async (id) => {
+  await dbConnect();
+
+  try {
+    const user = await User.findOne({ clerkId: id });
+
+    if (!user || user.role !== "admin") {
+      return null;
+    }
+
+    return user;
+  } catch (err) {
+    console.log(err);
+    return null;
   }
 };

@@ -4,6 +4,7 @@ import { createOrUpdateUser, deleteUser } from "../../_services/user.service";
 
 export const runtime = "nodejs";
 
+// CREATE USER
 export async function POST(req: NextRequest) {
   try {
     const evt = await verifyWebhook(req);
@@ -27,6 +28,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
+    // DELETE USER
     if (eventType === "user.deleted") {
       await deleteUser(id);
       return new Response("user deleted", {
