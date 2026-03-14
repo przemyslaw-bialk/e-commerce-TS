@@ -14,5 +14,5 @@ export async function createProduct(formData: FormData) {
   await dbConnect();
   await Item.create(product);
 
-  revalidatePath("/dashboard/add");
+  revalidatePath("/dashboard");
 }
