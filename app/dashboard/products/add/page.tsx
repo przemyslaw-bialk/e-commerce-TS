@@ -1,9 +1,7 @@
+import AddProductForm from "@components/admin/AddProductForm";
+
 const AddProductPage = () => {
-  return (
-    <div>
-      <h2>add product</h2>
-    </div>
-  );
+  return <AddProductForm />;
 };
 
 export default AddProductPage;

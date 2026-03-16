@@ -1,4 +1,5 @@
 import { auth } from "@clerk/nextjs/server";
+import AdminSidebar from "@components/admin/AdminSidebar";
 import { authorizeAdmin } from "app/_services/user.service";
 
 export default async function DashboardLayout({
@@ -14,9 +15,9 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div>
-      <h2>DASHBOARD</h2>
-      {children}
+    <div className="flex gap-2">
+      <AdminSidebar />
+      <div className=" w-full">{children}</div>
     </div>
   );
 }
