@@ -13,20 +13,40 @@ const AddProductForm = () => {
   };
 
   return (
-    <div className="bg-green-500 p-4">
-      <h2 className="text-xl mb-4">Add Product</h2>
-      <form action={handleSubmit} ref={formRef}>
-        <label>Product name</label>
-        <input name="name" type="text" className="bg-red-200 w-full mb-2" />
-
-        <label>Price</label>
-        <input name="price" type="number" className="bg-red-200 w-full mb-2" />
-
-        <label>Quantity</label>
-        <input name="qtn" type="number" className="bg-red-200 w-full mb-2" />
-
-        <label>Description</label>
-        <textarea name="description" className="bg-red-200 w-full mb-2" />
+    <div className="p-1 border border-green-300 py-6 px-2 rounded-xl ">
+      <h2 className="text-xl mb-4 ml-1">Add Product</h2>
+      <form action={handleSubmit} ref={formRef} className="flex flex-col gap-4">
+        <div className=" p-2 border border-green-300 rounded-xl ">
+          <label>Product name:</label>
+          <input
+            name="name"
+            type="text"
+            className="bg-green-100 w-full mb-2 p-2 rounded-xl"
+          />
+        </div>
+        <div className=" p-2 border border-green-300 rounded-xl ">
+          <label>Price:</label>
+          <input
+            name="price"
+            type="number"
+            className="bg-green-100 w-full mb-2 p-2 rounded-xl"
+          />
+        </div>
+        <div className=" p-2 border border-green-300 rounded-xl ">
+          <label>Quantity:</label>
+          <input
+            name="qtn"
+            type="number"
+            className="bg-green-100 w-full mb-2 p-2 rounded-xl"
+          />
+        </div>
+        <div className=" p-2 border border-green-300 rounded-xl ">
+          <label>Description:</label>
+          <textarea
+            name="description"
+            className="bg-green-100 w-full mb-2 p-2 rounded-xl h-[100px]"
+          />
+        </div>
         <Button />
       </form>
     </div>
@@ -36,7 +56,7 @@ const Button = () => {
   const { pending } = useFormStatus();
 
   return (
-    <button className="bg-red-400 p-2 w-full">
+    <button className="bg-green-400 p-2 w-full rounded-xl font-semibold uppercase">
       {pending ? "creating..." : "create product"}
     </button>
   );
