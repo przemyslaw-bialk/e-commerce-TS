@@ -1,17 +1,29 @@
 "use client";
 
 import { deleteProduct } from "app/dashboard/products/manage/actions";
-import { useRouter } from "next/navigation";
 
-const DeleteProduct = ({ id }: { id: string }) => {
-  const router = useRouter();
+import { useState } from "react";
+
+const DeleteProduct = ({
+  id,
+  onDelete,
+}: {
+  id: string;
+  onDelete: () => void;
+}) => {
+  const [loading, setLoading] = useState(false);
 
   const handleDelete = async () => {
+    setLoading(true);
     await deleteProduct(id);
-    router.refresh();
+    onDelete();
   };
 
-  return <button onClick={handleDelete}>delete</button>;
+  return (
+    <button onClick={handleDelete} disabled={loading} className="bg-red-500">
+      {loading ? "Deleting..." : "Delete"}
+    </button>
+  );
 };
 
 export default DeleteProduct;

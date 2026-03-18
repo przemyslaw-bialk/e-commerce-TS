@@ -52,6 +52,8 @@ const AddProductForm = () => {
     </div>
   );
 };
+
+// to use this hook it must be a child component of the FORM
 const Button = () => {
   const { pending } = useFormStatus();
 

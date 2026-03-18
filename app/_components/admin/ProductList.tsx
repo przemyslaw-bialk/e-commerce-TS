@@ -18,18 +18,26 @@ const ProductsList = () => {
     console.log(data);
   };
 
+  // to force re-render
+  const handleDelete = (id: string) => {
+    setItems((items) => items.filter((item) => item._id !== id));
+  };
+
   return (
     <div>
       {items.map((item) => (
-        <ul key={item._id} className="flex flex-col">
-          <li className="mt-4">
+        <ul className="flex flex-col gap-2" key={item._id}>
+          <li>
             {item.name}
-            <DeleteProduct id={item._id} />
+            <DeleteProduct
+              id={item._id}
+              onDelete={() => handleDelete(item._id)}
+            />
           </li>
-          <div className="flex gap-2 border border-b-2">
-            <li>Price: {item.price}</li>
-            <li>Quantity: {item.qtn}</li>
-          </div>
+          <li className="flex gap-2 border border-b-2">
+            <span>Price: {item.price}</span>
+            <span>Quantity: {item.qtn}</span>
+          </li>
         </ul>
       ))}
     </div>
