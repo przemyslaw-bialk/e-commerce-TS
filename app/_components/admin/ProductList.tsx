@@ -4,6 +4,7 @@ import { Item } from "@models/Item";
 import { getItems } from "app/_services/item.service";
 import { useEffect, useState } from "react";
 import DeleteProduct from "./DeleteProduct";
+import UpdateProductButton from "./UpdateProductButton";
 
 const ProductsList = () => {
   const [items, setItems] = useState<Item[]>([]);
@@ -33,6 +34,9 @@ const ProductsList = () => {
               id={item._id}
               onDelete={() => handleDelete(item._id)}
             />
+          </li>
+          <li>
+            <UpdateProductButton id={item._id} />
           </li>
           <li className="flex gap-2 border border-b-2">
             <span>Price: {item.price}</span>

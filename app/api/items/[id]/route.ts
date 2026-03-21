@@ -1,7 +1,7 @@
-import { auth } from "@clerk/nextjs/server";
+// import { auth } from "@clerk/nextjs/server";
 import dbConnect from "@lib/mongodb";
 import Item from "@models/Item";
-import { authorizeAdmin } from "app/_services/user.service";
+// import { authorizeAdmin } from "app/_services/user.service";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function PUT(
@@ -9,16 +9,17 @@ export async function PUT(
   { params }: { params: { id: string } },
 ) {
   // protecting route
-  const { userId } = await auth();
-  if (!userId) {
-    return new Response("Unauthorized", { status: 401 });
-  }
 
-  const admin = await authorizeAdmin(userId);
+  // const { userId } = await auth();
+  // if (!userId) {
+  //   return new Response("Unauthorized", { status: 401 });
+  // }
 
-  if (!admin) {
-    return new Response("Forbidden", { status: 403 });
-  }
+  // const admin = await authorizeAdmin(userId);
+
+  // if (!admin) {
+  //   return new Response("Forbidden", { status: 403 });
+  // }
 
   try {
     const { id } = params;
