@@ -3,13 +3,24 @@ import { useState } from "react";
 
 type Props = {
   id: string;
+  name: string;
+  price: number;
+  qtn: number;
   onUpdate: () => void;
+  onClose: () => void;
 };
 
-const UpdateProductForm = ({ id, onUpdate }: Props) => {
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState<number>();
-  const [qtn, setQtn] = useState<number>();
+const UpdateProductForm = ({
+  id,
+  name,
+  price,
+  qtn,
+  onUpdate,
+  onClose,
+}: Props) => {
+  const [nameState, setName] = useState(name);
+  const [priceState, setPrice] = useState(price);
+  const [qtnState, setQtn] = useState(qtn);
 
   const handleSubmit = async () => {
     await fetch(`/api/items/${id}`, {
@@ -18,40 +29,43 @@ const UpdateProductForm = ({ id, onUpdate }: Props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        newName: name,
-        newPrice: price,
-        newQtn: qtn,
+        newName: nameState,
+        newPrice: priceState,
+        newQtn: qtnState,
       }),
     });
+
+    // update and close the form
     onUpdate();
+    onClose();
   };
 
   return (
-    <div className="bg-red-300 w-full absolute flex h-full z-20">
+    <div className="bg-green-950 min-w-44 absolute flex flex-col gap-2 p-2 z-20 text-white">
       <label>Name</label>
       <input
         type="text"
-        className="bg-green-200"
-        name="name"
-        id="name"
+        className="bg-green-100"
+        value={nameState}
         onChange={(e) => setName(e.target.value)}
       />
+
       <label>Price</label>
       <input
         type="number"
-        className="bg-green-200"
-        name="price"
-        id="price"
+        className="bg-green-100"
+        value={priceState}
         onChange={(e) => setPrice(Number(e.target.value))}
       />
+
       <label>Quantity</label>
       <input
         type="number"
-        className="bg-green-200"
-        name="qtn"
-        id="qtn"
+        className="bg-green-100"
+        value={qtnState}
         onChange={(e) => setQtn(Number(e.target.value))}
       />
+
       <button onClick={handleSubmit} className="bg-red-200">
         update
       </button>

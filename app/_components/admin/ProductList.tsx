@@ -33,7 +33,13 @@ const ProductsList = () => {
                 <span>
                   <span className="font-bold">Name:</span> {item.name}
                 </span>
-                <UpdateProductButton id={item._id} onUpdate={fetchItems} />
+                <UpdateProductButton
+                  id={item._id}
+                  name={item.name}
+                  price={item.price}
+                  qtn={item.qtn}
+                  onUpdate={fetchItems}
+                />
               </li>
               <li>
                 <DeleteProduct
