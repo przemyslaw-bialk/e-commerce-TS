@@ -16,7 +16,6 @@ const ProductsList = () => {
   const fetchItems = async () => {
     const data = await getItems();
     setItems(data);
-    console.log(data);
   };
 
   // to force re-render
@@ -28,16 +27,18 @@ const ProductsList = () => {
     <div>
       {items.map((item) => (
         <ul className="flex flex-col gap-2" key={item._id}>
-          <li>
-            {item.name}
-            <DeleteProduct
-              id={item._id}
-              onDelete={() => handleDelete(item._id)}
-            />
-          </li>
-          <li>
-            <UpdateProductButton id={item._id} onUpdate={fetchItems} />
-          </li>
+          <div className=" flex items-end justify-between">
+            <li>
+              <span>Name: {item.name}</span>
+              <UpdateProductButton id={item._id} onUpdate={fetchItems} />
+            </li>
+            <li>
+              <DeleteProduct
+                id={item._id}
+                onDelete={() => handleDelete(item._id)}
+              />
+            </li>
+          </div>
           <li className="flex gap-2 border border-b-2">
             <span>Price: {item.price}</span>
             <span>Quantity: {item.qtn}</span>

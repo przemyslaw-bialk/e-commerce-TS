@@ -15,29 +15,12 @@ const UpdateProductButton = ({ id, onUpdate }: Props) => {
     setShowForm(!showForm);
   };
 
-  const handleUpdate = async () => {
-    console.log(`Id produktu to ${id}`);
-    await fetch(`/api/items/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        newName: "TEST NAZWY",
-        newPrice: 666666666,
-        newQtn: 1000000000,
-      }),
-    });
-
-    onUpdate();
-  };
-
   return (
-    <div className="relative ">
-      <button onClick={handleUpdate} className="bg-green-300 z-10">
-        update product
+    <div className="relative">
+      <button onClick={handleClick} className="bg-green-300 z-10">
+        quick edit
       </button>
-      {showForm && <UpdateProductForm />}
+      {showForm && <UpdateProductForm id={id} onUpdate={onUpdate} />}
     </div>
   );
 };
