@@ -36,7 +36,7 @@ const ProductsList = () => {
             />
           </li>
           <li>
-            <UpdateProductButton id={item._id} />
+            <UpdateProductButton id={item._id} onUpdate={fetchItems} />
           </li>
           <li className="flex gap-2 border border-b-2">
             <span>Price: {item.price}</span>
