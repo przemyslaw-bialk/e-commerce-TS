@@ -2,6 +2,7 @@
 
 import UpdateProductForm from "./UpdateProductForm";
 import { useState } from "react";
+import { CiEdit } from "react-icons/ci";
 
 type Props = {
   id: string;
@@ -17,8 +18,11 @@ const UpdateProductButton = ({ id, onUpdate }: Props) => {
 
   return (
     <div className="relative">
-      <button onClick={handleClick} className="bg-green-300 z-10">
-        quick edit
+      <button
+        onClick={handleClick}
+        className="text-green-500 text-2xl font-semibold "
+      >
+        <CiEdit />
       </button>
       {showForm && <UpdateProductForm id={id} onUpdate={onUpdate} />}
     </div>

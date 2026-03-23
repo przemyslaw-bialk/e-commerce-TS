@@ -27,22 +27,30 @@ const ProductsList = () => {
     <div>
       {items.map((item) => (
         <ul className="flex flex-col gap-2" key={item._id}>
-          <div className=" flex items-end justify-between">
-            <li>
-              <span>Name: {item.name}</span>
-              <UpdateProductButton id={item._id} onUpdate={fetchItems} />
-            </li>
-            <li>
-              <DeleteProduct
-                id={item._id}
-                onDelete={() => handleDelete(item._id)}
-              />
+          <div className="border border-zinc-300 mt-3 p-2">
+            <div className=" flex items-end justify-between ">
+              <li>
+                <span>
+                  <span className="font-bold">Name:</span> {item.name}
+                </span>
+                <UpdateProductButton id={item._id} onUpdate={fetchItems} />
+              </li>
+              <li>
+                <DeleteProduct
+                  id={item._id}
+                  onDelete={() => handleDelete(item._id)}
+                />
+              </li>
+            </div>
+            <li className="flex gap-2 ">
+              <span>
+                <span className="font-bold">Price:</span> {item.price}
+              </span>
+              <span>
+                <span className="font-bold">Quantity:</span> {item.qtn}
+              </span>
             </li>
           </div>
-          <li className="flex gap-2 border border-b-2">
-            <span>Price: {item.price}</span>
-            <span>Quantity: {item.qtn}</span>
-          </li>
         </ul>
       ))}
     </div>

@@ -22,6 +22,7 @@ const AddProductForm = () => {
             name="name"
             type="text"
             className="bg-green-100 w-full mb-2 p-2 rounded-xl"
+            required
           />
         </div>
         <div className=" p-2 border border-green-300 rounded-xl ">
@@ -29,6 +30,8 @@ const AddProductForm = () => {
           <input
             name="price"
             type="number"
+            step="0.01"
+            inputMode="decimal"
             className="bg-green-100 w-full mb-2 p-2 rounded-xl"
           />
         </div>
