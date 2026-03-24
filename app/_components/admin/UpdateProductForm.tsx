@@ -41,32 +41,35 @@ const UpdateProductForm = ({
   };
 
   return (
-    <div className="bg-green-950 min-w-44 absolute flex flex-col gap-2 p-2 z-20 text-white">
-      <label>Name</label>
+    <div className="bg-green-950 min-w-44 absolute flex flex-col gap-2 p-2 z-20 text-white rounded-xl">
+      <label>Name:</label>
       <input
         type="text"
-        className="bg-green-100"
+        className="bg-white text-black p-1 rounded-sm "
         value={nameState}
         onChange={(e) => setName(e.target.value)}
       />
 
-      <label>Price</label>
+      <label>Price:</label>
       <input
         type="number"
-        className="bg-green-100"
+        className="bg-white text-black p-1 rounded-sm "
         value={priceState}
         onChange={(e) => setPrice(Number(e.target.value))}
       />
 
-      <label>Quantity</label>
+      <label>Quantity:</label>
       <input
         type="number"
-        className="bg-green-100"
+        className="bg-white text-black p-1 rounded-sm "
         value={qtnState}
         onChange={(e) => setQtn(Number(e.target.value))}
       />
 
-      <button onClick={handleSubmit} className="bg-red-200">
+      <button
+        onClick={handleSubmit}
+        className="bg-green-500 rounded-xl hover:bg-green-600"
+      >
         update
       </button>
     </div>
