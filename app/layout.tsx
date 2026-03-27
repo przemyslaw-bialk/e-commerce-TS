@@ -5,6 +5,7 @@ import { Josefin_Sans } from "next/font/google";
 import Header from "./_components/layout/Header";
 
 import { ClerkProvider } from "@clerk/nextjs";
+import { ReduxProvider } from "./store/provider";
 
 const josefin = Josefin_Sans({
   subsets: ["latin-ext"],
@@ -30,10 +31,12 @@ export default function RootLayout({
         className={`${josefin.className} min-h-screen flex flex-col max-w-7xl mx-auto`}
       >
         <ClerkProvider>
-          <Header />
-          <div className="p-1">
-            <main>{children}</main>
-          </div>
+          <ReduxProvider>
+            <Header />
+            <div className="p-1">
+              <main>{children}</main>
+            </div>
+          </ReduxProvider>
         </ClerkProvider>
       </body>
     </html>
