@@ -1,15 +1,13 @@
 import { Item } from "@models/Item";
 import Image from "next/image";
-import { Button } from "./button";
+
+import AddToCartButton from "@components/products/AddToCartButton";
 
 interface ItemsProps {
   items: Item[];
 }
 
 const ProductCard = ({ items }: ItemsProps) => {
-  const handleAdd = () => {
-    console.log("added");
-  };
   return (
     <div className="grid grid-cols-3 gap-2 justify-center">
       {items.map((item) => (
@@ -29,7 +27,7 @@ const ProductCard = ({ items }: ItemsProps) => {
           <h4>{item.name}</h4>
           <p>on stock: {item.qtn}</p>
           <p>price: {item.price} pln</p>
-          <Button onClick={handleAdd}>add</Button>
+          <AddToCartButton product={item} />
           <p>{item.description}</p>
         </div>
       ))}
