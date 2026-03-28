@@ -7,6 +7,7 @@ const Cart = () => {
   const products = useSelector(
     (state: RootState) => state.products.allProducts,
   );
+  console.log(products);
 
   return (
     <div>

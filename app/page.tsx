@@ -1,5 +1,4 @@
 import HomeCarousel from "@components/home/HomeCarousel";
-import Cart from "@components/products/Cart";
 import Products from "@components/ui/Products";
 // import dbConnect from "@lib/mongodb";
 // import Item from "@models/Item";
@@ -12,7 +11,6 @@ const Home = async () => {
   return (
     <div>
       <HomeCarousel />
-      <Cart />
       <Products />
     </div>
   );
