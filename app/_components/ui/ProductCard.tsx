@@ -25,7 +25,7 @@ const ProductCard = ({ items }: ItemsProps) => {
             />
           </div>
           <h4>{item.name}</h4>
-          <p>on stock: {item.qtn}</p>
+          <p>on stock: {item.stock}</p>
           <p>price: {item.price} pln</p>
           <AddToCartButton product={item} />
           <p>{item.description}</p>
