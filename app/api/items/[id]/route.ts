@@ -26,13 +26,13 @@ export async function PUT(
     const {
       newPrice: price,
       newName: name,
-      newQtn: qtn,
+      newStock: stock,
     } = await request.json();
 
     await dbConnect();
     const updated = await Item.findByIdAndUpdate(
       id,
-      { price, name, qtn },
+      { price, name, stock },
       { new: true },
     );
 

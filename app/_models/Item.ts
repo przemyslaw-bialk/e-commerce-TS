@@ -4,7 +4,7 @@ export interface Item {
   _id: string;
   name: string;
   price: number;
-  qtn: number;
+  stock: number;
   description?: string;
   image?: string;
 }
@@ -14,7 +14,7 @@ const ItemSchema = new mongoose.Schema<Item & SchemaTimestampsConfig>(
     name: { type: String, required: true },
     price: Number,
     description: String,
-    qtn: { type: Number, required: true, default: 0 },
+    stock: { type: Number, required: true, default: 0 },
     image: String,
   },
   {

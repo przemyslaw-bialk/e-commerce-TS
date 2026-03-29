@@ -36,9 +36,9 @@ const AddProductForm = () => {
           />
         </div>
         <div className=" p-2 border border-green-300 rounded-xl ">
-          <label>Quantity:</label>
+          <label>Stock:</label>
           <input
-            name="qtn"
+            name="stock"
             type="number"
             className="bg-green-100 w-full mb-2 p-2 rounded-xl"
           />

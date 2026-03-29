@@ -8,11 +8,11 @@ type Props = {
   id: string;
   name: string;
   price: number;
-  qtn: number;
+  stock: number;
   onUpdate: () => void;
 };
 
-const UpdateProductButton = ({ id, name, price, qtn, onUpdate }: Props) => {
+const UpdateProductButton = ({ id, name, price, stock, onUpdate }: Props) => {
   const [showForm, setShowForm] = useState(false);
 
   const handleClose = () => {
@@ -32,7 +32,7 @@ const UpdateProductButton = ({ id, name, price, qtn, onUpdate }: Props) => {
           id={id}
           name={name}
           price={price}
-          qtn={qtn}
+          stock={stock}
           onUpdate={onUpdate}
           onClose={handleClose}
         />

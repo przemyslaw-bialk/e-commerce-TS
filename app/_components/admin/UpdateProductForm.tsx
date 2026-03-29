@@ -5,7 +5,7 @@ type Props = {
   id: string;
   name: string;
   price: number;
-  qtn: number;
+  stock: number;
   onUpdate: () => void;
   onClose: () => void;
 };
@@ -14,13 +14,13 @@ const UpdateProductForm = ({
   id,
   name,
   price,
-  qtn,
+  stock,
   onUpdate,
   onClose,
 }: Props) => {
   const [nameState, setName] = useState(name);
   const [priceState, setPrice] = useState(price);
-  const [qtnState, setQtn] = useState(qtn);
+  const [stockState, setStock] = useState(stock);
 
   const handleSubmit = async () => {
     await fetch(`/api/items/${id}`, {
@@ -31,7 +31,7 @@ const UpdateProductForm = ({
       body: JSON.stringify({
         newName: nameState,
         newPrice: priceState,
-        newQtn: qtnState,
+        newStock: stockState,
       }),
     });
 
@@ -62,8 +62,8 @@ const UpdateProductForm = ({
       <input
         type="number"
         className="bg-white text-black p-1 rounded-sm "
-        value={qtnState}
-        onChange={(e) => setQtn(Number(e.target.value))}
+        value={stockState}
+        onChange={(e) => setStock(Number(e.target.value))}
       />
 
       <button

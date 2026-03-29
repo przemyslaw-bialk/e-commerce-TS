@@ -16,6 +16,7 @@ const ProductsList = () => {
   const fetchItems = async () => {
     const data = await getItems();
     setItems(data);
+    console.log(data);
   };
 
   // to force re-render
@@ -37,7 +38,7 @@ const ProductsList = () => {
                   id={item._id}
                   name={item.name}
                   price={item.price}
-                  qtn={item.qtn}
+                  stock={item.stock}
                   onUpdate={fetchItems}
                 />
               </li>
@@ -53,7 +54,7 @@ const ProductsList = () => {
                 <span className="font-bold">Price:</span> {item.price}
               </span>
               <span>
-                <span className="font-bold">Quantity:</span> {item.qtn}
+                <span className="font-bold">Stock:</span> {item.stock}
               </span>
             </li>
           </div>

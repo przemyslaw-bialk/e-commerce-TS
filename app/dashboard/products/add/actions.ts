@@ -7,7 +7,7 @@ export async function createProduct(formData: FormData) {
   const product = {
     name: formData.get("name") as string,
     price: Number(formData.get("price")),
-    qtn: Number(formData.get("qtn")),
+    stock: Number(formData.get("stock")),
     description: formData.get("description"),
   };
 
