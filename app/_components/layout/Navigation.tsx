@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { CiMenuFries } from "react-icons/ci";
 import { LuUser } from "react-icons/lu";
-import { IoCartOutline } from "react-icons/io5";
 import { useUser } from "@clerk/nextjs";
+import DisplayQtnInCart from "@components/products/DisplayQtnInCart";
 
 export default function Navigation() {
   const { isSignedIn } = useUser();
@@ -53,13 +53,7 @@ export default function Navigation() {
             <LuUser className="w-5 h-5 mb-1 " />
           </Link>
         </li>
-        {isSignedIn && (
-          <li>
-            <Link href="/cart" onClick={() => setShowMenu(false)}>
-              <IoCartOutline className="w-5 h-5 mb-1 " />
-            </Link>
-          </li>
-        )}
+        {isSignedIn && <DisplayQtnInCart onShow={() => setShowMenu(false)} />}
       </ul>
 
       {/* HAMBURGER */}
