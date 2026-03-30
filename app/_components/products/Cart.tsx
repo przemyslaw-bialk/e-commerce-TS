@@ -2,6 +2,7 @@
 import { Item } from "@models/Item";
 import { RootState } from "app/store/store";
 import { useSelector } from "react-redux";
+import DeleteItemFromCart from "./DeleteItemFromCart";
 
 type CartItem = Item & {
   qtn: number;
@@ -30,6 +31,8 @@ const Cart = () => {
         <div key={product._id}>
           <p>{product.name}</p>
           <p>{product.qtn}</p>
+          <p>{product._id}</p>
+          <DeleteItemFromCart id={product._id} />
         </div>
       ))}
     </div>

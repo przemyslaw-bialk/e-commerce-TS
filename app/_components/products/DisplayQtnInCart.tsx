@@ -26,7 +26,7 @@ const DisplayQtnInCart = ({ onShow }: Prop) => {
           <IoCartOutline className="w-5 h-5 mb-1 mr-3 " />
         </Link>
       </li>
-      <span className=" absolute top-[-2px] right-0 text-xs text-green-600">
+      <span className=" absolute top-[-2px] right-0 text-xs font-semibold text-green-600">
         {totalQtn}
       </span>
     </div>
