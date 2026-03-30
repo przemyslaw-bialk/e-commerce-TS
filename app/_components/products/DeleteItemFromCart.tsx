@@ -1,5 +1,6 @@
 import { removeItemFromCart } from "app/features/products/productSlice";
 import { useDispatch } from "react-redux";
+import { MdDeleteOutline } from "react-icons/md";
 
 type ProductId = {
   id: string;
@@ -14,10 +15,10 @@ const DeleteItemFromCart = ({ id }: ProductId) => {
 
   return (
     <button
-      className="bg-red-400 p-3 rounded-lg"
+      className=" text-xl text-red-500 rounded-lg absolute right-1"
       onClick={() => handleDelete(id)}
     >
-      delete
+      <MdDeleteOutline />
     </button>
   );
 };

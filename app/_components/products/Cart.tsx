@@ -28,10 +28,18 @@ const Cart = () => {
       <h2>cart</h2>
       <div>Total: {totalQtn}</div>
       {products.map((product: CartItem) => (
-        <div key={product._id}>
-          <p>{product.name}</p>
-          <p>{product.qtn}</p>
-          <p>{product._id}</p>
+        <div
+          key={product._id}
+          className="flex items-center justify-start gap-2 mt-3 border rounded-md border-zinc-400 p-2"
+        >
+          <p>- {product.name}</p>
+          <p>
+            <span className="font-semibold">qtn:</span> {product.qtn}
+          </p>
+
+          <p>
+            <span className="font-semibold">price:</span> {product.price}
+          </p>
           <DeleteItemFromCart id={product._id} />
         </div>
       ))}
