@@ -15,7 +15,8 @@ const DeleteItemFromCart = ({ id }: ProductId) => {
 
   return (
     <button
-      className=" text-xl text-red-500 rounded-lg absolute right-1"
+      className=" text-xl text-red-500
+       rounded-lg absolute right-1"
       onClick={() => handleDelete(id)}
     >
       <MdDeleteOutline />

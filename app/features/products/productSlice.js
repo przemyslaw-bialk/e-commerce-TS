@@ -10,6 +10,7 @@ const productSlice = createSlice({
       const existingProduct = state.allProducts.find(
         (item) => item._id === action.payload._id,
       );
+
       if (existingProduct) {
         existingProduct.qtn = existingProduct.qtn + action.payload.qtn;
       } else {
