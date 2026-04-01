@@ -5,6 +5,7 @@ import { addProduct } from "app/features/products/productSlice";
 import { RootState } from "app/store/store";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import ToastProduct from "./ToastProduct";
 
 type Props = {
   product: Item;
@@ -28,14 +29,16 @@ const AddToCartButton = ({ product }: Props) => {
 
   const handleAddToCart = () => {
     if (currentQtn + qtn > product.stock) {
-      console.log("not enough stock");
-    } else
+      ToastProduct({ variant: "ERROR" });
+    } else {
       dispatch(
         addProduct({
           ...product,
           qtn,
         }),
       );
+      ToastProduct({ variant: "SUCCESS" });
+    }
   };
 
   return (

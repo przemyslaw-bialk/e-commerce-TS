@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ToastContainer } from "react-toastify";
 
 import { Josefin_Sans } from "next/font/google";
 import Header from "./_components/layout/Header";
@@ -35,6 +36,7 @@ export default function RootLayout({
             <Header />
             <div className="p-1">
               <main>{children}</main>
+              <ToastContainer autoClose={700} />
             </div>
           </ReduxProvider>
         </ClerkProvider>
