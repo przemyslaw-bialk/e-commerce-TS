@@ -63,3 +63,13 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
+
+/* disbaling arrows for increment/decrement in input type number */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

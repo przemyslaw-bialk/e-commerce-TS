@@ -28,7 +28,6 @@ const ProductCard = ({ items }: ItemsProps) => {
           <p>on stock: {item.stock}</p>
           <p>price: {item.price} pln</p>
           <AddToCartButton product={item} />
-          <p>{item.description}</p>
         </div>
       ))}
     </div>

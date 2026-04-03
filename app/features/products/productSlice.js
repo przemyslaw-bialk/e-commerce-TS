@@ -7,17 +7,19 @@ const productSlice = createSlice({
   },
   reducers: {
     addProduct: (state, action) => {
+      const { qtn } = action.payload;
+
       const existingProduct = state.allProducts.find(
         (item) => item._id === action.payload._id,
       );
 
+      if (qtn <= 0) {
+        return;
+      }
       if (existingProduct) {
         existingProduct.qtn = existingProduct.qtn + action.payload.qtn;
       } else {
-        state.allProducts.push({
-          ...action.payload,
-          qtn: action.payload.qtn,
-        });
+        state.allProducts.push(action.payload);
       }
     },
     clearCart: (state) => {

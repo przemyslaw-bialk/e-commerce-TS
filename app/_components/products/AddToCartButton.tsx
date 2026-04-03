@@ -6,6 +6,9 @@ import { RootState } from "app/store/store";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ToastProduct from "./ToastProduct";
+import { Button } from "@components/ui/button";
+import IncrementButton from "./IncrementButton";
+import DecrementButton from "./DecrementButton";
 
 type Props = {
   product: Item;
@@ -29,7 +32,9 @@ const AddToCartButton = ({ product }: Props) => {
 
   const handleAddToCart = () => {
     if (currentQtn + qtn > product.stock) {
-      ToastProduct({ variant: "ERROR" });
+      ToastProduct({ variant: "NO_STOCK" });
+    } else if (qtn <= 0) {
+      ToastProduct({ variant: "UNDER_ZERO" });
     } else {
       dispatch(
         addProduct({
@@ -42,14 +47,19 @@ const AddToCartButton = ({ product }: Props) => {
   };
 
   return (
-    <div>
-      <input
-        type="number"
-        min={1}
-        value={qtn}
-        onChange={(e) => setQtn(Number(e.target.value))}
-      />
-      <button onClick={handleAddToCart}>add to cart</button>
+    <div className=" flex flex-col items-center">
+      <Button onClick={handleAddToCart}> add to cart</Button>
+      <div className="flex items-center justify-center gap-2 mt-2">
+        <DecrementButton setQtn={setQtn} qtn={qtn} />
+        <input
+          type="number"
+          min={1}
+          value={qtn}
+          onChange={(e) => setQtn(Number(e.target.value))}
+          className="text-center no-arrows appearance-none w-16  rounded-xl border border-green-500 focus:outline-none focus:border-green-300"
+        />
+        <IncrementButton setQtn={setQtn} />
+      </div>
     </div>
   );
 };
