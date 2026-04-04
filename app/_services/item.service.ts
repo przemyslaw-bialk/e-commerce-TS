@@ -11,6 +11,13 @@ export const getItems = async (): Promise<Item[]> => {
   return json.data;
 };
 
+export const getItem = async (id: string) => {
+  const res = await fetch(`/api/items/${id}`);
+
+  const json = await res.json();
+  return json.data;
+};
+
 // export const deleteItem = async (id: string) => {
 //   await dbConnect();
 

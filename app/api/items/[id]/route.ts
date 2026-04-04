@@ -45,3 +45,19 @@ export async function PUT(
     );
   }
 }
+
+export async function GET({ params }: { params: { id: string } }) {
+  await dbConnect();
+
+  try {
+    const item = await Item.findById(params.id);
+
+    if (!item) {
+      return NextResponse.json({ message: "Item not found" }, { status: 404 });
+    }
+
+    return NextResponse.json({ data: item }, { status: 200 });
+  } catch (err) {
+    return NextResponse.json({ message: err }, { status: 500 });
+  }
+}

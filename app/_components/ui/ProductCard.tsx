@@ -13,7 +13,7 @@ const ProductCard = ({ items }: ItemsProps) => {
       {items.map((item) => (
         <div
           key={item._id}
-          className="bg-slate-200 p-4 rounded-lg flex flex-col items-center gap-2"
+          className="border border-zinc-200 p-4 rounded-lg flex flex-col items-center gap-2"
         >
           <div className="relative ">
             <Image
@@ -26,6 +26,7 @@ const ProductCard = ({ items }: ItemsProps) => {
           </div>
           <h4>{item.name}</h4>
           <p>on stock: {item.stock}</p>
+          <p>{item._id}</p>
           <p>price: {item.price} pln</p>
           <AddToCartButton product={item} />
         </div>

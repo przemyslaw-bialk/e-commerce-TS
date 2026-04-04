@@ -1,11 +1,16 @@
 "use client";
 
-import { getItems } from "app/_services/item.service";
+import { getItem, getItems } from "app/_services/item.service";
 import { Item } from "@models/Item";
 import { useEffect, useState } from "react";
 
 export default function ProductsPage() {
   const [items, setItems] = useState<Item[]>([]);
+
+  const handleItem = async (id: string) => {
+    const data = await getItem(id);
+    console.log(data);
+  };
 
   const fetchItems = async () => {
     const data = await getItems();
@@ -21,7 +26,10 @@ export default function ProductsPage() {
     <div>
       <h2>items page</h2>
       {items.map((item) => (
-        <p key={item._id}>{item.name}</p>
+        <p key={item._id}>
+          {item.name}
+          <button onClick={() => handleItem(item._id)}>{item._id}</button>
+        </p>
       ))}
     </div>
   );
