@@ -46,7 +46,10 @@ export async function PUT(
   }
 }
 
-export async function GET({ params }: { params: { id: string } }) {
+export async function GET(
+  req: Request,
+  { params }: { params: { id: string } },
+) {
   await dbConnect();
 
   try {
@@ -58,6 +61,6 @@ export async function GET({ params }: { params: { id: string } }) {
 
     return NextResponse.json({ data: item }, { status: 200 });
   } catch (err) {
-    return NextResponse.json({ message: err }, { status: 500 });
+    return NextResponse.json({ message: "Error" }, { status: 500 });
   }
 }
